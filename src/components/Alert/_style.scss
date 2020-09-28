@@ -1,0 +1,78 @@
+    .alert {
+        position: fixed;
+        top: 0.5rem;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 30rem;
+        color: $white;
+        font-size: $font-size-base;
+        line-height: $line-height-base;
+        @include alert-style( $blue);
+        text-align: left;
+        padding: $alert-padding-y $alert-padding-x;
+        border-radius: $alert-border-radius;
+    }
+    
+    .alert-title {
+        font-weight: bold;
+    }
+    
+    .alert-discribe {
+        font-size: $font-size-sm;
+    }
+    
+    .alert-success {
+        @include alert-style($green);
+    }
+    
+    .alert-danger {
+        @include alert-style($red);
+    }
+    
+    .alert-warn {
+        @include alert-style($gray-500);
+    }
+    
+    .alert-close {
+        position: absolute;
+        right: 1.5rem;
+        top: .75rem;
+        width: .75rem;
+        height: .75rem;
+        cursor: pointer;
+    }
+    
+    .alert-close:before,
+    .alert-close:after {
+        position: absolute;
+        left: .55rem;
+        content: ' ';
+        height: 1rem;
+        width: .2rem;
+        border-radius: .1rem;
+        background-color: $white;
+    }
+    
+    .alert-close:before {
+        transform: rotate(45deg);
+    }
+    
+    .alert-close:after {
+        transform: rotate(-45deg);
+    }
+    
+    .alert-visiable {
+        display: block;
+    }
+    
+    // .alert-visiable-false {
+    //     display: none;
+    // }
+    .alert-showico {
+        display: block;
+    }
+    
+    // .alert-showicon-fasle {
+    //     display: none;
+    // }
