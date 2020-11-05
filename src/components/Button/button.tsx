@@ -1,22 +1,21 @@
-import React from 'react'
+import React, { FC } from 'react'
 import classNames from 'classnames'
 
-export enum ButtonSize {
-    Large = 'lg',
-    Small = 'sm'
-}
 
-export enum ButtonType {
-    Primary = 'primary',
-    Default = 'default',
-    Danger = 'danger',
-    Link = 'link'
-}
+export type ButtonType = 'primary' | 'default' | 'danger' | 'link' 
+export type ButtonSize = 'lg' | 'sm'
 
 interface BaseButtonProps {
     className?: string;
+    /** 设置Button是否禁用 */
     disable?: boolean;
+    /**
+     * 设置Button的尺寸
+     */
     size?: ButtonSize;
+    /**
+     * 设置button的类型
+     */
     btnType?: ButtonType;
     href?: string;
     children?: React.ReactNode
@@ -26,7 +25,10 @@ interface BaseButtonProps {
 type NativeButtonProps = BaseButtonProps & React.ButtonHTMLAttributes<HTMLElement>
 type AnchorButtonProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElement>
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
-const Button: React.FC<ButtonProps> = (props) => {
+/**
+ * 页面中最常用的按钮元素，适用于完成特定的交互
+ */
+export const Button: FC<ButtonProps> = (props) => {
     const { 
         btnType,
         className,
@@ -40,10 +42,10 @@ const Button: React.FC<ButtonProps> = (props) => {
     const classes = classNames('btn', className, {
         [`btn-${btnType}`]: btnType,
         [`btn-${size}`]: size,
-        'disable': (btnType === ButtonType.Link) && disable
+        'disable': (btnType === 'link') && disable
     })
 
-    if(btnType === ButtonType.Link && href) {
+    if(btnType === 'link' && href) {
         return (
         <a className={classes} href={href} {...restProps}>
             {children}
@@ -58,7 +60,7 @@ const Button: React.FC<ButtonProps> = (props) => {
 
 Button.defaultProps = {
     disable: false,
-    btnType: ButtonType.Default
+    btnType: 'default'
 }
 
-export default Button
+export default Button;

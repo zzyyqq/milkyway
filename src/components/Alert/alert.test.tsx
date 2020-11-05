@@ -7,7 +7,7 @@ const defaultProps = {
 }
 
 const testProps = {
-    alertType: AlertType.Default,
+    alertType: 'default',
     className: 'kclass'
 }
 let span: HTMLElement

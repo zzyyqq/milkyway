@@ -6,7 +6,7 @@
 
 @mixin button-style($background, $border, $color, $hover-background: lighten($background, 7.5%), $horver-border: lighten($background, 10%), $horver-color: $color) {
     color: $color;
-    border: $border;
+    // border: $border;
     background: $background;
     border-color: $border;
     &:horver {

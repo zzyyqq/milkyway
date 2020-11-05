@@ -1,41 +1,44 @@
-import React, { useState } from 'react'
+import React, { useState, FC } from 'react'
 import classNames from 'classnames'
 
-export enum AlertType {
-    Default = 'default',
-    Success = 'success',
-    Danger = 'danger',
-    Warning = 'warning'
-}
+export type AlertType = 'default' | 'success' | 'danger' | 'warning'
 
 interface BaseAlertProps {
     className?: string,
-    alertVisiable?: boolean,
+    // alertVisiable?: boolean,
+    /**类型 */
     alertType?: AlertType,
+    /**标题*/
     alertTitle?: string,
+    /**描述*/
     alertDescription?: string,
+    /**是否显示关闭图标*/
     closeable?: boolean,
-    onClose?: (visible: string) => void;
+    /**关闭弹窗事件 */
+    onClose?: () => void;
 }
 export type AlertProps = BaseAlertProps
-const Alert:React.FC<BaseAlertProps> = (props) => {
-    let [visible, setVisiable] = useState(true)
+export const Alert: FC<BaseAlertProps> = (props) => {
+    let [visible, setVisible] = useState(true)
     const { 
         closeable,
         className,
         alertType,
-        alertVisiable,
+        // alertVisiable,
         alertTitle,
         alertDescription,
         onClose
      } = props
 
-     const handleClick = () => {
-        setVisiable(false)
+     const handleClick = (e: React.MouseEvent) => {
+        if (onClose) {
+            onClose()
+          }
+          setVisible(false)
       }
      const classes = classNames('alert', className, {
         [`alert-${alertType}`]: alertType,
-        'alert-visiable': alertVisiable
+        // 'alert-visiable': alertVisiable
      })
 
      const closeclasses = classNames('alert-close', {
@@ -55,7 +58,7 @@ const Alert:React.FC<BaseAlertProps> = (props) => {
 
 Alert.defaultProps = {
     closeable: false,
-    alertType: AlertType.Default
+    alertType: 'default'
 }
 
-export default Alert
+export default Alert;

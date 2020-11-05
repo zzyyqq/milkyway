@@ -2,8 +2,8 @@ import React from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import './App.css';
-import Button, { ButtonType, ButtonSize } from './components/Button/button'
-import Alert, { AlertType } from './components/Alert/alert'
+import Button from './components/Button/button'
+import Alert from './components/Alert/alert'
 import Menu from './components/Menu/menu'
 import MenuItem from './components/Menu/menuItem'
 import SubMenu from "./components/Menu/subMenu"
@@ -40,12 +40,12 @@ const App: React.FC = () => {
           </TabItem>
         </Tabs>
         <Button autoFocus>Hello</Button>
-        <Button btnType={ButtonType.Danger} size={ButtonSize.Small}>Danger Small</Button>
-        <Button btnType={ButtonType.Primary} size={ButtonSize.Large}>Primary Large</Button>
+        <Button btnType='danger' size='sm'>Danger Small</Button>
+        <Button btnType='primary' size='lg'>Primary Large</Button>
         <Button disabled>Disable Button</Button>
-        <Button btnType={ButtonType.Link} href="http://www.baidu.com" disabled>Baidu Link</Button>
-        <Button btnType={ButtonType.Link} href="http://www.baidu.com" target="_blank">Baidu Link</Button>
-        <Alert  alertDescription="你妈叫你回家吃饭" alertType={AlertType.Success} closeable alertVisiable></Alert>
+        <Button btnType='link' href="http://www.baidu.com" disabled>Baidu Link</Button>
+        <Button btnType='link' href="http://www.baidu.com" target="_blank">Baidu Link</Button>
+        <Alert  alertDescription="你妈叫你回家吃饭" alertType='success' closeable></Alert>
       </header>
     </div>
   );

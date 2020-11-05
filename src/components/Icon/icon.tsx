@@ -1,7 +1,9 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, FC } from 'react'
 import classNames from 'classnames'
 import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome'
-import { TabsProps } from '../Tabs/tabs'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fas)
 
 export type ThemeProps = 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark'
 
@@ -9,7 +11,7 @@ export interface IconProps extends FontAwesomeIconProps {
     theme?: ThemeProps
 }
 
-const Icon: React.FC<IconProps> = props => {
+export const Icon: FC<IconProps> = props => {
     const { className, theme, ...restProps} = props
 
     const classes = classNames('icon', className, {
@@ -17,8 +19,8 @@ const Icon: React.FC<IconProps> = props => {
     })
 
     return (
-        <FontAwesomeIcon className={classes} {...restProps}></FontAwesomeIcon>
+        <FontAwesomeIcon className={classes} {...restProps}/>
     )
 }
 
-export default Icon
+export default Icon;
